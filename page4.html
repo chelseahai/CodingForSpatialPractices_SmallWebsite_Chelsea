@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="web-ring">
+        <a href="index.html">Home</a>
+        <a href="page1.html">Page 1</a>
+        <a href="page2.html">Page 2</a>
+        <a href="page3.html">Page 3</a>
+        <a href="page4.html" class="current">Page 4</a>
+        <a href="page5.html">Page 5</a>
+    </nav>
+
+    <header>
+        <h1>Page 4 Content</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Fourth Topic</h2>
+            <p>This is placeholder content for page 4. Each page maintains the same basic structure with semantic HTML elements.</p>
+            
+            <img src="placeholder-image.jpg" alt="Placeholder image for page 4">
+            
+            <ul>
+                <li>Fourth page item one</li>
+                <li>Fourth page item two</li>
+                <li>Fourth page item three</li>
+            </ul>
+            
+            <p>Move to <a href="page5.html">Page 5</a> or revisit <a href="page2.html">Page 2</a>.</p>
+            
+            <details>
+                <summary>Click to expand details</summary>
+                <p>This is a details element with summary - another HTML element we didn't cover in class that creates an interactive disclosure widget.</p>
+            </details>
+        </section>
+    </main>
+
+    <footer>
+        <p>Footer content placeholder</p>
+    </footer>
+
+    <!-- Custom Glowy Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <script>
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX - 10 + 'px';
+            cursor.style.top = e.clientY - 10 + 'px';
+            
+            cursorFollower.style.left = e.clientX - 4 + 'px';
+            cursorFollower.style.top = e.clientY - 4 + 'px';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+            cursorFollower.style.opacity = '1';
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+            cursorFollower.style.opacity = '0';
+        });
+
+        // Add hover effects for links
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                cursor.style.boxShadow = '0 0 30px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.5)';
+            });
+            
+            link.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                cursor.style.boxShadow = '0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)';
+            });
+        });
+    </script>
+</body>
+</html>
