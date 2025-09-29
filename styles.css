@@ -36,6 +36,23 @@ body {
     letter-spacing: 1px;
 }
 
+/* Center text section */
+.center-text {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 5;
+}
+
+.center-text p {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
 /* Gallery section */
 .gallery {
     flex: 1;
