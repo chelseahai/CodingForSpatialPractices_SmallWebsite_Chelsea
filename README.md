@@ -1,2 +1,0 @@
-# CodingForSpatialPractices_SmallWebsite_Chelsea
-

@@ -12,37 +12,31 @@
 <body>
     <nav class="web-ring">
         <a href="index.html">Home</a>
-        <a href="page1.html" class="current">Page 1</a>
-        <a href="page2.html">Page 2</a>
-        <a href="page3.html">Page 3</a>
-        <a href="page4.html">Page 4</a>
-        <a href="page5.html">Page 5</a>
+        <a href="page1.html" class="current">Eyes</a>
+        <a href="page2.html">Foundation</a>
+        <a href="page3.html">Toning and Lips</a>
+        <a href="page4.html">Perfume</a>
+        <a href="page5.html">Hair</a>
     </nav>
 
-    <header>
-        <h1>Page 1 Content</h1>
-    </header>
+    <div class="timer" id="timer">00:00:00</div>
 
-    <main>
-        <article>
-            <h2>First Topic</h2>
-            <p>This is placeholder content for page 1. Here you can explore the first topic or theme of your choosing.</p>
-            
-            <img src="placeholder-image.jpg" alt="Placeholder image for page 1">
-            
-            <ul>
-                <li>First item related to this topic</li>
-                <li>Second item with more details</li>
-                <li>Third item to complete the list</li>
-            </ul>
-            
-            <p>Navigate to <a href="page2.html">Page 2</a> or <a href="page3.html">Page 3</a> for more content.</p>
-            
-            <blockquote>
-                This is a blockquote element - something we didn't cover in class that adds visual emphasis to important text.
-            </blockquote>
-        </article>
-    </main>
+    <header class="collage-hero">
+        <div class="eye-collage">
+            <img src="Eyes/e01.png" alt="Eye makeup 1 - Strongest" class="eye-image" data-index="0">
+            <img src="Eyes/e02.png" alt="Eye makeup 2" class="eye-image" data-index="1">
+            <img src="Eyes/e03.png" alt="Eye makeup 3" class="eye-image" data-index="2">
+            <img src="Eyes/e04.png" alt="Eye makeup 4" class="eye-image" data-index="3">
+            <img src="Eyes/e05.png" alt="Eye makeup 5" class="eye-image" data-index="4">
+            <img src="Eyes/e06.png" alt="Eye makeup 6" class="eye-image" data-index="5">
+            <img src="Eyes/e07.png" alt="Eye makeup 7" class="eye-image" data-index="6">
+            <img src="Eyes/e08.png" alt="Eye makeup 8" class="eye-image" data-index="7">
+            <img src="Eyes/e09.png" alt="Eye makeup 9" class="eye-image" data-index="8">
+            <img src="Eyes/e10.png" alt="Eye makeup 10" class="eye-image" data-index="9">
+            <img src="Eyes/e11.png" alt="Eye makeup 11" class="eye-image" data-index="10">
+            <img src="Eyes/e12.png" alt="Eye makeup 12 - Plainest" class="eye-image" data-index="11">
+        </div>
+    </header>
 
     <footer>
         <p>Footer content placeholder</p>
@@ -86,6 +80,74 @@
                 cursor.style.boxShadow = '0 0 20px rgba(0,0,0,0.5), 0 0 40px rgba(0,0,0,0.3)';
             });
         });
+
+        // Eye collage interactions
+        const eyeImages = document.querySelectorAll('.eye-image');
+        let activeIndex = -1;
+
+        eyeImages.forEach((image, index) => {
+            image.addEventListener('click', () => {
+                if (activeIndex === index) {
+                    // If clicking the same image, reset
+                    resetCollage();
+                } else {
+                    // Set new active image
+                    setActiveImage(index);
+                }
+            });
+        });
+
+        function setActiveImage(index) {
+            // Reset all images first
+            eyeImages.forEach(img => {
+                img.classList.remove('active');
+                img.style.transform = '';
+            });
+            
+            // Set clicked image as active (only enlarging effect)
+            eyeImages[index].classList.add('active');
+            activeIndex = index;
+            
+            // Move other images either up or down by fixed distance
+            eyeImages.forEach((img, i) => {
+                if (i !== index) {
+                    const moveUp = i % 2 === 0; // Alternate between up and down
+                    const moveDistance = moveUp ? -350 : 250; // Upper images go further up
+                    img.style.transform = `translateY(${moveDistance}px)`;
+                }
+            });
+        }
+
+        function resetCollage() {
+            eyeImages.forEach(img => {
+                img.classList.remove('active');
+                img.style.transform = '';
+            });
+            activeIndex = -1;
+        }
+
+        // Timer functionality - Countdown stopwatch
+        const timer = document.getElementById('timer');
+        const timeLimit = 30 * 60; // 30 minutes in seconds for page 1
+        let remainingTime = timeLimit;
+        
+        function updateTimer() {
+            const hours = Math.floor(remainingTime / 3600);
+            const minutes = Math.floor((remainingTime % 3600) / 60);
+            const seconds = remainingTime % 60;
+            
+            timer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (remainingTime > 0) {
+                remainingTime--;
+            } else {
+                timer.textContent = '00:00:00';
+            }
+        }
+        
+        // Start timer immediately and update every second
+        updateTimer();
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 </html>

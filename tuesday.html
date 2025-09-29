@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuesday - the CHELSEA log</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <main class="day-content">
+            <div class="album-container">
+                <div class="album-cover">
+                    <img src="Vogue_AlbumCover.png" alt="Vogue Album Cover" />
+                    <button class="play-pause-btn" onclick="togglePlayPause()">
+                        <span class="play-icon">▶</span>
+                        <span class="pause-icon">⏸</span>
+                    </button>
+                </div>
+                <div class="album-caption">
+                    Ryūkō 流行 - Sanmon Gossip 三文ゴシップ - Sheena Ringo
+                </div>
+                <audio id="audioPlayer" preload="metadata">
+                    <source src="Ryuukou -Vogue- - Sheena Ringo.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </main>
+        
+        <nav class="day-nav">
+            <a href="index.html" class="back-to-gallery">← Back</a>
+            <a href="monday.html">Monday</a>
+            <a href="tuesday.html" class="active">Tuesday</a>
+            <a href="wednesday.html">Wednesday</a>
+            <a href="thursday.html">Thursday</a>
+            <a href="friday.html">Friday</a>
+        </nav>
+    </div>
+
+    <script>
+        const audio = document.getElementById('audioPlayer');
+        const playPauseBtn = document.querySelector('.play-pause-btn');
+        const playIcon = document.querySelector('.play-icon');
+        const pauseIcon = document.querySelector('.pause-icon');
+        
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline';
+            } else {
+                audio.pause();
+                playIcon.style.display = 'inline';
+                pauseIcon.style.display = 'none';
+            }
+        }
+        
+        // Update button when audio ends
+        audio.addEventListener('ended', function() {
+            playIcon.style.display = 'inline';
+            pauseIcon.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
